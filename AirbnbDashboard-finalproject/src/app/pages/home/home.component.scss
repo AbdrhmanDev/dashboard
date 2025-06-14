@@ -1,0 +1,803 @@
+.home-container {
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.hotel-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.hotel-card:hover {
+  transform: translateY(-5px);
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 16px;
+}
+
+.hotel-info h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.category {
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.details {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.details span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.stars {
+  color: #ffc107;
+}
+
+.reviews {
+  color: #666;
+}
+
+.price {
+  margin-bottom: 8px;
+}
+
+.amount {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.per-night {
+  color: #666;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-align: center;
+  background: #f44336;
+  color: white;
+}
+
+.status.available {
+  background: #4caf50;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dashboard-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.loading-state p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Welcome Section */
+.welcome-section {
+  margin-bottom: 32px;
+}
+
+.welcome-section h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.welcome-section p {
+  color: #666;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin: 0;
+}
+
+/* Statistics Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Stat Cards */
+.stat-card {
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card mat-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.stat-card .stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card .stat-info h3 {
+  margin: 0;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: #666;
+}
+
+.stat-card .stat-value {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 500;
+  margin: 8px 0 0 0;
+}
+
+/* Card Colors */
+.stat-card.total .stat-icon {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.stat-card.confirmed .stat-icon {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.stat-card.pending .stat-icon {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.stat-card.revenue .stat-icon {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+/* Popular Properties */
+.popular-properties {
+  height: 100%;
+}
+
+.property-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.property-item {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: transform 0.2s;
+}
+
+.property-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.property-info {
+  margin-bottom: 12px;
+}
+
+.property-info h4 {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin: 0 0 8px 0;
+}
+
+.property-info p {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  color: #666;
+  margin: 0;
+}
+
+.property-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.property-revenue {
+  color: #1976d2;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.last-booking {
+  color: #666;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* Recent Activities */
+.activities-card {
+  height: 100%;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.activity-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.activity-icon.confirmed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.activity-icon.pending {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.activity-icon.cancelled {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.activity-message {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  margin: 0;
+  flex: 1;
+}
+
+.activity-time {
+  font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+  color: #666;
+}
+
+.activity-amount {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+/* Recent Bookings Table */
+.table-container {
+  overflow-x: auto;
+  margin: 0 -20px;
+  padding: 0 20px;
+}
+
+table {
+  width: 100%;
+  min-width: 800px;
+}
+
+.mat-mdc-header-cell {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  white-space: nowrap;
+}
+
+.mat-mdc-cell {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+/* Status Badge */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+  text-transform: capitalize;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .dashboard-container {
+    padding: 16px;
+  }
+
+  .stats-grid {
+    gap: 16px;
+  }
+
+  .dashboard-grid {
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    padding: 12px;
+  }
+
+  .welcome-section {
+    margin-bottom: 24px;
+  }
+
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .dashboard-grid {
+    gap: 12px;
+  }
+
+  .property-item {
+    padding: 12px;
+  }
+
+  .activity-item {
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-container {
+    padding: 8px;
+  }
+
+  .stat-card mat-card-content {
+    padding: 16px;
+  }
+
+  .stat-card .stat-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+
+  .property-item {
+    padding: 8px;
+  }
+
+  .activity-item {
+    padding: 6px;
+    gap: 8px;
+  }
+
+  .table-container {
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+}
+
+/* Ensure proper spacing for mobile devices */
+@media (max-width: 576px) {
+  .mat-mdc-card {
+    margin-bottom: 16px;
+  }
+
+  .mat-mdc-card-header {
+    padding: 12px;
+  }
+
+  .mat-mdc-card-content {
+    padding: 12px;
+  }
+}
+.dashboard-container {
+  padding: 16px;
+}
+
+.loading-state {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-icon mat-icon {
+  font-size: 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.property-item {
+  margin-bottom: 16px;
+}
+
+.property-info h4 {
+  margin: 0;
+}
+
+.property-stats {
+  margin-top: 8px;
+}
+
+.activities-card,
+.popular-properties {
+  height: 100%;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.mat-table {
+  min-width: 800px;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+table {
+  min-width: 800px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+/* Optional status color styling */
+.status-badge.cancelled {
+  color: #e53935;
+  background-color: #fbe9e7;
+}
+
+.status-badge.completed {
+  color: #43a047;
+  background-color: #e8f5e9;
+}
+::ng-deep .mat-mdc-card {
+  overflow-x: auto;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .table-container table,
+  .table-container thead,
+  .table-container tbody,
+  .table-container th,
+  .table-container td,
+  .table-container tr {
+    display: block;
+    width: 100%;
+  }
+
+  .table-container thead {
+    display: none;
+  }
+
+  .table-container tr {
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .table-container td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+
+  .table-container td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex: 1;
+    color: #333;
+    padding-right: 10px;
+  }
+
+  .table-container td:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Recent Bookings Styles */
+.recent-bookings {
+  margin-top: 24px;
+
+  .mat-mdc-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .mat-mdc-card-title {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+}
+
+/* Desktop Table View */
+.desktop-view {
+  display: block;
+  overflow-x: auto;
+  margin: 0 -16px;
+  padding: 0 16px;
+
+  table {
+    width: 100%;
+    min-width: 800px;
+  }
+
+  .mat-mdc-header-cell {
+    font-weight: 500;
+    color: #666;
+    white-space: nowrap;
+    padding: 12px 16px;
+  }
+
+  .mat-mdc-cell {
+    padding: 12px 16px;
+  }
+
+  .mat-mdc-row:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+/* Mobile Card View */
+.mobile-view {
+  display: none;
+}
+
+.booking-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  overflow: hidden;
+
+  .booking-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+
+    .booking-id {
+      font-weight: 500;
+      color: #333;
+    }
+  }
+
+  .booking-card-content {
+    padding: 16px;
+
+    .booking-info {
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .label {
+          color: #666;
+          font-weight: 500;
+        }
+
+        .value {
+          color: #333;
+          text-align: right;
+
+          &.amount {
+            font-weight: 500;
+            color: #1976d2;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Status Badge Styles */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  &.confirmed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  &.pending {
+    background-color: #fff3e0;
+    color: #e65100;
+  }
+
+  &.cancelled {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 768px) {
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+  }
+
+  .recent-bookings {
+    .mat-mdc-card-header {
+      padding: 12px;
+    }
+
+    .mat-mdc-card-title {
+      font-size: 1.1rem;
+    }
+  }
+}

@@ -18,17 +18,13 @@
 
 /* Navbar Base */
 .navbar {
-  height: 64px;
-  background: white;
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  height: 64px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -598,79 +594,80 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .navbar {
-    padding: 0 16px;
+    height: 60px;
   }
 
-  .menu-toggle {
-    display: block;
+  .container-fluid {
+    padding: 0 15px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .search-bar {
+    max-width: 300px;
+  }
+
+  .balance-wrapper {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: 56px;
+  }
+
+  .container-fluid {
+    padding: 0 10px;
   }
 
   .navbar-center {
     display: none;
   }
 
-  .notifications-dropdown {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
+  .logo-icon {
+    margin-right: 0;
   }
 
-  .notifications-list {
-    max-height: calc(100vh - 180px);
-  }
-
-  .icon-button {
-    width: 44px;
-    height: 44px;
-    padding: 10px;
-  }
-
-  .icon-button .material-icons {
-    font-size: 24px;
-  }
-
-  .notification-badge {
-    min-width: 20px;
-    height: 20px;
-    font-size: 12px;
-    padding: 0 6px;
-  }
-
-  .balance-wrapper {
-    min-width: auto;
-    padding: 4px 6px;
-  }
-
-  .balance-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .balance-icon .material-icons {
-    font-size: 16px;
-  }
-
-  .balance-label {
-    font-size: 10px;
-  }
-
-  .balance-amount {
-    font-size: 12px;
-  }
-
-  .logo-tagline {
+  .user-name {
     display: none;
   }
 
-  .logo-name {
-    font-size: 18px;
+  .notifications-dropdown {
+    width: 300px;
+    right: -10px;
+  }
+
+  .user-dropdown {
+    width: 280px;
+    right: -10px;
+  }
+
+  .activity-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .activity-amount {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    height: 50px;
+  }
+
+  .container-fluid {
+    padding: 0 8px;
+  }
+
+  .menu-toggle {
+    padding: 6px;
   }
 
   .logo-icon {
@@ -678,23 +675,52 @@
     height: 32px;
   }
 
-  .logo-icon .material-icons {
+  .icon-button {
+    padding: 6px;
+  }
+
+  .material-icons {
     font-size: 20px;
   }
-}
 
-@media (max-width: 480px) {
-  .logo-text {
-    display: none;
+  .notification-badge {
+    font-size: 10px;
+    padding: 2px 4px;
   }
 
-  .logo-icon {
-    width: 36px;
-    height: 36px;
+  .user-avatar {
+    width: 32px;
+    height: 32px;
   }
 
-  .logo-icon .material-icons {
-    font-size: 22px;
+  .notifications-dropdown {
+    width: 280px;
+  }
+
+  .user-dropdown {
+    width: 260px;
+  }
+
+  .dropdown-header {
+    padding: 12px;
+  }
+
+  .dropdown-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dropdown-user-info h3 {
+    font-size: 1rem;
+  }
+
+  .dropdown-user-info p {
+    font-size: 0.8rem;
+  }
+
+  .dropdown-item {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 }
 

@@ -1,0 +1,113 @@
+/* Existing styles */
+.analytics-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .analytics-container {
+    padding: 15px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .analytics-tables {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .analytics-container {
+    padding: 10px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-details h3 {
+    font-size: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-change {
+    font-size: 0.9rem;
+  }
+
+  .table-card {
+    padding: 15px;
+  }
+
+  .table-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .analytics-container {
+    padding: 8px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-details h3 {
+    font-size: 0.9rem;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+
+  .stat-change {
+    font-size: 0.8rem;
+  }
+
+  .table-card {
+    padding: 12px;
+  }
+
+  .table-card h3 {
+    font-size: 1.1rem;
+  }
+
+  th,
+  td {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .status {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+}

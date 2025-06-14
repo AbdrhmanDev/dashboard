@@ -1,5 +1,5 @@
 .page-container {
-  padding: 24px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -190,5 +190,152 @@
 @media (max-width: 768px) {
   .users-table-container {
     overflow-x: auto;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .page-container {
+    padding: 15px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .filters-card {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-field {
+    width: 100%;
+  }
+
+  .filter-fields {
+    width: 100%;
+  }
+
+  .users-table-container {
+    overflow-x: auto;
+  }
+
+  .users-table {
+    min-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-container {
+    padding: 10px;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user-name {
+    font-size: 0.9rem;
+  }
+
+  .user-email {
+    font-size: 0.8rem;
+  }
+
+  .action-buttons {
+    gap: 4px;
+  }
+
+  .mat-icon-button {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .mat-icon {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-container {
+    padding: 8px;
+  }
+
+  .page-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .header-icon {
+    font-size: 20px;
+  }
+
+  .mat-form-field {
+    font-size: 0.9rem;
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .user-name {
+    font-size: 0.8rem;
+  }
+
+  .user-email {
+    font-size: 0.7rem;
+  }
+
+  .action-buttons {
+    gap: 2px;
+  }
+
+  .mat-icon-button {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+  }
+
+  .mat-icon {
+    font-size: 16px;
+  }
+
+  .mat-paginator {
+    font-size: 0.8rem;
   }
 }

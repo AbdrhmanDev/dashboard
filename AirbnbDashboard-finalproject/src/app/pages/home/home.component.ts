@@ -10,22 +10,25 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { BookingService } from '../../services/booking.service';
-import { Booking } from '../../models/booking';
+import { Booking, Property } from '../../models/booking';
 import { RevenueService } from '../../services/revenue.service';
 
-interface Property {
-  propertyId: string | { _id: string; title: string };
-  startDate: Date | string;
-  status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
-  totalPrice: number;
-}
 interface RevenueResponse {
   totalRevenue: number;
 }
+
+interface PropertyStats {
+  count: number;
+  revenue: number;
+  property: Property;
+  title: string;
+  lastBooking: Date;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -75,18 +78,12 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.bookingService.getBookings().subscribe({
       next: (bookings) => {
-        // console.log('Raw bookings data:', JSON.stringify(bookings, null, 2));
         this.recentBookings = bookings.slice(0, 5);
         this.calculateStats(bookings);
         this.generatePopularProperties(bookings);
         this.generateRecentActivities(bookings);
         this.isLoading = false;
-        // console.log('Processed bookings:', {
-        //   recentBookings: this.recentBookings,
-        //   stats: this.bookingStats,
-        //   popularProperties: this.popularProperties,
-        //   recentActivities: this.recentActivities,
-        // });
+
         this.revenueService.getRevenue().subscribe({
           next: (response: RevenueResponse) => {
             this.getRevenue = response.totalRevenue;
@@ -136,19 +133,8 @@ export class HomeComponent implements OnInit {
   }
 
   private generatePopularProperties(bookings: Booking[]) {
-    // Create a map to store property statistics
-    const propertyStats = new Map<
-      string,
-      {
-        count: number;
-        revenue: number;
-        property: any;
-        title: string;
-        lastBooking: Date;
-      }
-    >();
+    const propertyStats = new Map<string, PropertyStats>();
 
-    // Process each booking to gather property statistics
     bookings.forEach((booking) => {
       booking.properties.forEach((property) => {
         const propertyId =
@@ -164,7 +150,7 @@ export class HomeComponent implements OnInit {
         const current = propertyStats.get(propertyId) || {
           count: 0,
           revenue: 0,
-          property: property.propertyId,
+          property: property,
           title: propertyTitle,
           lastBooking: new Date(booking.createdAt || new Date()),
         };
@@ -172,7 +158,6 @@ export class HomeComponent implements OnInit {
         current.count++;
         current.revenue += property.totalPrice;
 
-        // Update last booking date if this booking is more recent
         const bookingDate = new Date(booking.createdAt || new Date());
         if (bookingDate > current.lastBooking) {
           current.lastBooking = bookingDate;
@@ -182,18 +167,14 @@ export class HomeComponent implements OnInit {
       });
     });
 
-    // Convert to array and sort by booking count (descending)
     this.popularProperties = Array.from(propertyStats.values())
       .sort((a, b) => {
-        // First sort by count (descending)
         const countDiff = b.count - a.count;
         if (countDiff !== 0) return countDiff;
 
-        // If count is equal, sort by revenue (descending)
         const revenueDiff = b.revenue - a.revenue;
         if (revenueDiff !== 0) return revenueDiff;
 
-        // If revenue is equal, sort by most recent booking
         return b.lastBooking.getTime() - a.lastBooking.getTime();
       })
       .slice(0, 4)
@@ -230,7 +211,8 @@ export class HomeComponent implements OnInit {
       .slice(0, 5);
   }
 
-  formatDate(date: string | Date): string {
+  formatDate(date: string | Date | undefined): string {
+    if (!date) return 'N/A';
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
@@ -245,7 +227,8 @@ export class HomeComponent implements OnInit {
     }).format(amount);
   }
 
-  getTimeAgo(date: string | Date): string {
+  getTimeAgo(date: string | Date | undefined): string {
+    if (!date) return 'N/A';
     const seconds = Math.floor(
       (new Date().getTime() - new Date(date).getTime()) / 1000
     );
@@ -265,6 +248,24 @@ export class HomeComponent implements OnInit {
     interval = seconds / 60;
     if (interval > 1) return Math.floor(interval) + ' minutes ago';
 
-    return Math.floor(seconds) + ' seconds ago';
+    return 'Just now';
+  }
+
+  getPropertyDisplay(
+    propertyId: string | { _id: string; title: string } | undefined
+  ): string {
+    if (!propertyId) return 'N/A';
+    if (typeof propertyId === 'string') {
+      return 'Property ' + propertyId.substring(0, 8);
+    }
+    return propertyId.title || 'N/A';
+  }
+
+  getUserDisplay(userId: string | { name: string } | undefined): string {
+    if (!userId) return 'N/A';
+    if (typeof userId === 'string') {
+      return 'Guest ' + userId.substring(0, 8);
+    }
+    return userId.name || 'N/A';
   }
 }
