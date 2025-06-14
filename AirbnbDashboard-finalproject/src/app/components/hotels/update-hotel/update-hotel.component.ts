@@ -30,7 +30,7 @@ import { Hotel2 } from '../../../models/hoteln';
 import { AdvantagesFormComponent } from '../create-hotel/advantages-form/advantages-form.component';
 import { CloudinaryUploaderComponent } from '../../cloudinary-uploader/cloudinary-uploader.component';
 import * as L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+
 import { LoginService } from '../../../services/login.service';
 
 @Component({

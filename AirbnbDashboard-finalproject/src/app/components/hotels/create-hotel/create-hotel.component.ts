@@ -29,7 +29,7 @@ import { Category } from '../../../models/category';
 import { AdvantagesFormComponent } from './advantages-form/advantages-form.component';
 import { CloudinaryUploaderComponent } from '../../cloudinary-uploader/cloudinary-uploader.component';
 import * as L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+
 
 @Component({
   selector: 'app-create-hotel',

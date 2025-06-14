@@ -19,22 +19,19 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*.png",
-                "input": "node_modules/leaflet/dist/images",
-                "output": "assets"
+                "input": "assets",
+                "output": "assets/images"
               }
             ],
             "allowedCommonJsDependencies": ["leaflet"],
             "styles": [
+              "src/assets/leaflet/leaflet.css",
               "@angular/material/prebuilt-themes/cyan-orange.css",
-              "src/styles.css",
-              "src/assets/leaflet-overrides.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -87,17 +84,12 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
-              },
-              {
-                "glob": "**/*.png",
-                "input": "node_modules/leaflet/dist/images",
-                "output": "assets"
               }
             ],
             "styles": [
+              "src/assets/leaflet/leaflet.css",
               "@angular/material/prebuilt-themes/cyan-orange.css",
-              "src/styles.css",
-              "src/assets/leaflet-overrides.css"
+              "src/styles.css"
             ],
             "scripts": []
           }
