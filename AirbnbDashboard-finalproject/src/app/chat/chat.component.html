@@ -1,0 +1,96 @@
+<div class="chat-container">
+    <div class="chat-icon" (click)="toggleChat()">
+        <img src="https://res.cloudinary.com/dhttwlg0f/image/upload/v1747607287/xlwtj8hrbkpjvibg9uig.png" class="img-fluid" alt="Chat Icon">
+        <span *ngIf="unreadCount > 0" class="unread-badge">{{unreadCount}}</span>
+    </div>
+
+    <div *ngIf="isChatOpen" class="chat-window">
+        <div class="chat-header">
+            <h3>Chat</h3>
+            <div class="user-status">
+                <select (change)="updateUserStatus($any($event.target).value)">
+                    <option value="online">Online</option>
+                    <option value="away">Away</option>
+                    <option value="offline">Offline</option>
+                </select>
+            </div>
+            <button (click)="toggleChat()">Close</button>
+        </div>
+
+        <div class="chat-content">
+            <!-- Conversations List -->
+            <div class="conversations-list" *ngIf="!selectedConversation">
+                <div class="online-users">
+                    <h4>Online Users ({{onlineUsers.length}})</h4>
+                    <div *ngFor="let user of onlineUsers" class="user-item">
+                        <span class="status-indicator online"></span>
+                        {{user.name}}
+                    </div>
+                </div>
+                <div class="conversations">
+                    <h4>Conversations</h4>
+                    <div *ngFor="let conversation of conversations" class="conversation-item"
+                        (click)="selectConversation(conversation)">
+                        <div class="conversation-info">
+                            <span class="user-name">{{conversation._id.name}}</span>
+                            <span class="last-message">{{conversation.lastMessage.content}}</span>
+                        </div>
+                        <span *ngIf="conversation.unreadCount > 0"
+                            class="unread-count">{{conversation.unreadCount}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages-container" *ngIf="selectedConversation">
+                <div class="chat-header">
+                    <button class="back-button" (click)="selectedConversation = null">←</button>
+                    <div class="chat-info">
+                        <h4>{{selectedConversation._id.name}}</h4>
+                        <span class="typing-indicator" *ngIf="isTyping">typing...</span>
+                    </div>
+                </div>
+
+                <div class="chat-messages" #messageContainer>
+                    <div *ngFor="let message of messages" class="message"
+                        [ngClass]="{'sent': isSender(message), 'received': isReceiver(message)}">
+                        <div class="message-sender" *ngIf="!isSender(message)">
+                            <img [src]="message.sender.avatar || 'assets/default-avatar.png'" 
+                                 alt="Sender's avatar" class="sender-avatar">
+                            <span class="sender-name">{{message.sender.name}}</span>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">{{message.content}}</div>
+                            <div class="message-actions">
+                                <button *ngIf="isSender(message) && message._id"
+                                    (click)="editMessage(message._id!, message.content || '')">Edit</button>
+                                <button *ngIf="isSender(message) && message._id"
+                                    (click)="deleteMessage(message._id!)">Delete</button>
+                                <div class="reactions" *ngIf="message.reactions">
+                                    <ng-container *ngFor="let reaction of message.reactions | keyvalue">
+                                        <span class="reaction">{{reaction.value}}</span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="message-status" *ngIf="isSender(message)">
+                                <span *ngIf="message.read">✓✓</span>
+                                <span *ngIf="!message.read && message.delivered">✓✓</span>
+                                <span *ngIf="!message.delivered">✓</span>
+                            </div>
+                        </div>
+                        <div class="message-time">{{message.createdAt | date:'shortTime'}}</div>
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <div class="input-actions">
+                      
+                    </div>
+                    <input [(ngModel)]="newMessageContent" placeholder="Write a message..."
+                        (keyup.enter)="sendMessage()" (focus)="setTypingStatus(true)" (blur)="setTypingStatus(false)">
+                    <button (click)="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

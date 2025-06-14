@@ -1,0 +1,265 @@
+<div class="create-hotel-container">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Create New Hotel</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+        <!-- Basic Information -->
+        <div class="form-section">
+          <h3>Basic Information</h3>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Hotel Name</mat-label>
+            <input matInput formControlName="title" placeholder="Enter hotel name" />
+            <mat-error *ngIf="hotelForm.get('title')?.invalid">
+              {{ getErrorMessage("title") }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" rows="4" placeholder="Enter hotel description"></textarea>
+            <mat-error *ngIf="hotelForm.get('description')?.invalid">
+              {{ getErrorMessage("description") }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>About This Space</mat-label>
+            <textarea matInput formControlName="aboutThisSpace" rows="4"
+              placeholder="Describe what makes your space special"></textarea>
+            <mat-error *ngIf="hotelForm.get('aboutThisSpace')?.invalid">
+              {{ getErrorMessage("aboutThisSpace") }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Details -->
+        <div class="form-section">
+          <h3>Details</h3>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Price per Night</mat-label>
+            <input matInput type="number" formControlName="pricePerNight" placeholder="Enter price" />
+            <mat-error *ngIf="hotelForm.get('pricePerNight')?.invalid">
+              {{ getErrorMessage("pricePerNight") }}
+            </mat-error>
+          </mat-form-field>
+
+          <div class="form-row" formGroupName="spaceDetails">
+            <mat-form-field appearance="outline">
+              <mat-label>Bedrooms</mat-label>
+              <input matInput type="number" formControlName="bedrooms" />
+              <mat-error *ngIf="hotelForm.get('spaceDetails.bedrooms')?.invalid">
+                {{ getErrorMessage("spaceDetails.bedrooms") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Bathrooms</mat-label>
+              <input matInput type="number" formControlName="path" />
+              <mat-error *ngIf="hotelForm.get('spaceDetails.path')?.invalid">
+                {{ getErrorMessage("spaceDetails.path") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Beds</mat-label>
+              <input matInput type="number" formControlName="beds" />
+              <mat-error *ngIf="hotelForm.get('spaceDetails.beds')?.invalid">
+                {{ getErrorMessage("spaceDetails.beds") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Area (m²)</mat-label>
+              <input matInput type="number" formControlName="area" />
+              <mat-error *ngIf="hotelForm.get('spaceDetails.area')?.invalid">
+                {{ getErrorMessage("spaceDetails.area") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Rooms</mat-label>
+              <input matInput type="number" formControlName="rooms" />
+              <mat-error *ngIf="hotelForm.get('spaceDetails.rooms')?.invalid">
+                {{ getErrorMessage("spaceDetails.rooms") }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row" formGroupName="capacity">
+            <mat-form-field appearance="outline">
+              <mat-label>Adults</mat-label>
+              <input matInput type="number" formControlName="adults" />
+              <mat-error *ngIf="hotelForm.get('capacity.adults')?.invalid">
+                {{ getErrorMessage("capacity.adults") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Children</mat-label>
+              <input matInput type="number" formControlName="children" />
+              <mat-error *ngIf="hotelForm.get('capacity.children')?.invalid">
+                {{ getErrorMessage("capacity.children") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Infants</mat-label>
+              <input matInput type="number" formControlName="infants" />
+              <mat-error *ngIf="hotelForm.get('capacity.infants')?.invalid">
+                {{ getErrorMessage("capacity.infants") }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Pet Policy</mat-label>
+              <mat-select formControlName="petPolicy">
+                <mat-option value="allowed">Allowed</mat-option>
+                <mat-option value="not_allowed">Not Allowed</mat-option>
+                <mat-option value="on_request">On Request</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>View</mat-label>
+              <mat-select formControlName="view">
+                <mat-option value="ocean">Ocean View</mat-option>
+                <mat-option value="mountain">Mountain View</mat-option>
+                <mat-option value="city">City View</mat-option>
+                <mat-option value="garden">Garden View</mat-option>
+                <mat-option value="none">None</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Cancellation Policy</mat-label>
+              <mat-select formControlName="cancellationPolicy">
+                <mat-option value="flexible">Flexible</mat-option>
+                <mat-option value="moderate">Moderate</mat-option>
+                <mat-option value="strict">Strict</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Property Type</mat-label>
+              <mat-select formControlName="propertyType">
+                <mat-option value="apartment">Apartment</mat-option>
+                <mat-option value="villa">Villa</mat-option>
+                <mat-option value="house">House</mat-option>
+                <mat-option value="private_room">Private Room</mat-option>
+                <mat-option value="shared_room">Shared Room</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="form-section" formGroupName="address">
+          <h3>Location</h3>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Full Address</mat-label>
+            <input matInput formControlName="fullAddress" />
+            <mat-error *ngIf="hotelForm.get('address.fullAddress')?.invalid">
+              {{ getErrorMessage("address.fullAddress") }}
+            </mat-error>
+          </mat-form-field>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Country</mat-label>
+              <input matInput formControlName="country" />
+              <mat-error *ngIf="hotelForm.get('address.country')?.invalid">
+                {{ getErrorMessage("address.country") }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput formControlName="city" />
+              <mat-error *ngIf="hotelForm.get('address.city')?.invalid">
+                {{ getErrorMessage("address.city") }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Map Container -->
+          <div class="map-container">
+            <h4>Select Location on Map</h4>
+            <div #map class="map"></div>
+            <small class="map-hint">Click on the map to set the location</small>
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div class="form-section">
+          <h3>Images</h3>
+          <app-cloudinary-uploader (imageUploaded)="onImageUpload($event)"></app-cloudinary-uploader>
+
+          <div *ngFor="let image of images.controls; let i = index">
+            <div class="image-preview">
+              <img [src]="image.value" alt="Uploaded Image" />
+              <button (click)="removeImage(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Amenities -->
+        <div class="form-section">
+          <h3>Advantages</h3>
+          <app-advantages-form [formArray]="advantagesFormArray"></app-advantages-form>
+        </div>
+
+        <!-- Safety Features -->
+        <div class="form-section" formGroupName="safetyFeatures">
+          <h3>Safety Features</h3>
+          <div class="checkbox-group">
+            <mat-checkbox formControlName="smokeDetector">
+              Smoke Detector
+            </mat-checkbox>
+            <mat-checkbox formControlName="carbonMonoxideDetector">
+              Carbon Monoxide Detector
+            </mat-checkbox>
+            <mat-checkbox formControlName="firstAidKit">
+              First Aid Kit
+            </mat-checkbox>
+            <mat-checkbox formControlName="fireExtinguisher">
+              Fire Extinguisher
+            </mat-checkbox>
+          </div>
+        </div>
+
+        <!-- Hidden Fields -->
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="categoryId" required>
+            <mat-option *ngFor="let category of categories" [value]="category._id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="hotelForm.get('categoryId')?.invalid">
+            Please select a category
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="button" mat-stroked-button routerLink="/hotels">
+            Cancel
+          </button>
+          <button type="submit" mat-raised-button color="primary">
+            Create Hotel
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- [disabled]="hotelForm.invalid || imageFiles.length === 0" -->
