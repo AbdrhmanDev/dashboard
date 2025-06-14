@@ -1,8 +1,8 @@
 [build]
 base="AirbnbDashboard-finalproject"
-  command = "npm run build:prod"
+  
   publish = "dist/browser"
-  command = "npm run build:prod"
+   command = "npm run build:prod"
   
 
 [[redirects]]
