@@ -71,7 +71,8 @@
   }
 
   .main-content {
-    margin-left: 72px; /* Match collapsed sidebar width */
+    margin-left: 23px; /* Match collapsed sidebar width */
+    margin-right: -19px;
   }
 
   .sidebar.active {

@@ -43,11 +43,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy {
     private hotelService: HotelsService,
     private userStateService: UserStateService,
     private revenueService: RevenueService
-
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.userSubscription = this.userStateService.user$.subscribe(user => {
+    this.userSubscription = this.userStateService.user$.subscribe((user) => {
       this.isAdmin = user?.role === 'Admin';
     });
     this.loadAnalyticsData();

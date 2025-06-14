@@ -505,6 +505,7 @@ mat-card-actions mat-icon {
   .filters-section {
     flex-direction: column;
     gap: 10px;
+    width: auto;
   }
 
   .search-field {
